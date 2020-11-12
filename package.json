@@ -6,7 +6,7 @@
   "author": "xiongmeihui",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node ./test/index.tsx",
+    "dev": "ts-node -r tsconfig-paths/register ./test/index.tsx",
     "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
@@ -15,6 +15,7 @@
     "prettier": "^2.1.1",
     "ts-loader": "^8.0.4",
     "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"

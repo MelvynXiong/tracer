@@ -1,11 +1,10 @@
-const RESERVED_PROPS = {
-  key: true,
-  ref: true,
-  __self: true,
-  __source: true,
-};
+import { RESERVED_PROPS } from 'shared/props.ts';
+interface IProps {
+  children: object | Array<any>;
+  [propName: string]: any;
+}
 
-const ReactElement = function (type: string, key: string, props: object) {
+const ReactElement = function (type: string, key: string, props: IProps) {
   const element = {
     type,
     key,
@@ -14,9 +13,9 @@ const ReactElement = function (type: string, key: string, props: object) {
   return element;
 };
 
-export function createElement(type: any, config: any, children: any) {
+export function createElement(type: string, config: any, ...children: any[]) {
   let propName;
-  const props = {} as any;
+  const props: IProps = {} as IProps;
   let key = null;
 
   if (config !== null) {
@@ -32,16 +31,7 @@ export function createElement(type: any, config: any, children: any) {
     }
   }
 
-  const childrenLength = arguments.length - 2;
-  if (childrenLength === 1) {
-    props.children = children;
-  } else if (childrenLength > 1) {
-    const childArray = new Array(childrenLength);
-    for (let i = 0; i < childrenLength; i++) {
-      childArray[i] = arguments[i + 2];
-    }
-    props.children = childArray;
-  }
+  props.children = children;
 
   return ReactElement(type, key, props);
 }
