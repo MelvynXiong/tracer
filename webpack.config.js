@@ -14,6 +14,8 @@ module.exports = {
   resolve: {
     alias: {
       shared: path.resolve(__dirname, 'packages/shared'),
+      'react-dom': path.resolve(__dirname, 'packages/react-dom'),
+      react: path.resolve(__dirname, 'packages/react'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

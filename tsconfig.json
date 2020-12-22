@@ -7,7 +7,9 @@
     "baseUrl": ".",
     "lib": ["esnext", "DOM"],
     "paths": {
-      "shared/*": ["packages/shared/*"]
+      "shared/*": ["packages/shared/*"],
+      "react/*": ["packages/react/*"],
+      "react-dom/*": ["packages/react-dom/*"]
     }
   }
 }

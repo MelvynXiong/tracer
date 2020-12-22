@@ -1,10 +1,11 @@
-import { RESERVED_PROPS } from 'shared/props.ts';
+// import { Component } from './ReactBaseClasses';
+import { RESERVED_PROPS } from 'shared/props';
 interface IProps {
   children: object | Array<any>;
   [propName: string]: any;
 }
 
-const ReactElement = function (type: string, key: string, props: IProps) {
+const ReactElement = function (type: any, key: string, props: IProps) {
   const element = {
     type,
     key,
@@ -13,7 +14,13 @@ const ReactElement = function (type: string, key: string, props: IProps) {
   return element;
 };
 
-export function createElement(type: string, config: any, ...children: any[]) {
+/**
+ *
+ * @param type 当JSX片段中的某个元素是组件时，type将会是个方法，而不是字符串
+ * @param config
+ * @param children
+ */
+export function createElement(type: any, config: any, ...children: any[]) {
   let propName;
   const props: IProps = {} as IProps;
   let key = null;
@@ -32,6 +39,5 @@ export function createElement(type: string, config: any, ...children: any[]) {
   }
 
   props.children = children;
-
   return ReactElement(type, key, props);
 }
